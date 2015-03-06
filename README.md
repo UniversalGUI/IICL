@@ -1,4 +1,4 @@
-# IICL
+#![IICL Logo](IICL.png "Infinite Improbability Command Line")
 
 ##Infinite Improbability Command Line
 
