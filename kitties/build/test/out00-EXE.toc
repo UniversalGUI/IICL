@@ -1,0 +1,9 @@
+('C:\\PyInstaller-2.1\\test\\build\\test\\test.exe',
+ True,
+ False,
+ None,
+ None,
+ [],
+ None,
+ False,
+ 1425828924L)
