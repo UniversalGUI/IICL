@@ -1,0 +1,4 @@
+('C:\\PyInstaller-2.1\\test\\dist\\test',
+ None,
+ False,
+ [('test.exe', 'C:\\PyInstaller-2.1\\test\\build\\test\\test.exe', 'EXECUTABLE'), ('test.exe.manifest', 'C:\\PyInstaller-2.1\\test\\build\\test\\test.exe.manifest', 'BINARY'), ('python27.dll', 'C:\\Windows\\system32\\python27.dll', 'BINARY'), ('select', 'C:\\python27\\DLLs\\select.pyd', 'EXTENSION'), ('unicodedata', 'C:\\python27\\DLLs\\unicodedata.pyd', 'EXTENSION'), ('_hashlib', 'C:\\python27\\DLLs\\_hashlib.pyd', 'EXTENSION'), ('bz2', 'C:\\python27\\DLLs\\bz2.pyd', 'EXTENSION'), ('_ssl', 'C:\\python27\\DLLs\\_ssl.pyd', 'EXTENSION'), ('_socket', 'C:\\python27\\DLLs\\_socket.pyd', 'EXTENSION')])
