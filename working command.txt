@@ -1,0 +1,1 @@
+C:\Test>"C:\Python27/Scripts/pyinstaller" iicl.py -n "iicl" -F

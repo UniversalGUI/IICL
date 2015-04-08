@@ -1,5 +1,4 @@
-import sys
-import random
+
 
 def randomAlphaNumeric( length ):
     alphaNumeric = ''
@@ -7,8 +6,8 @@ def randomAlphaNumeric( length ):
         alphaNumeric = alphaNumeric + random.choice('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')
     return alphaNumeric
 
-def addQuoteToFile( fullFilePath ):
-	quotes = ['There is a theory which states that if ever anyone discovers exactly what the Universe is for and why it is here, it will instantly disappear and be replaced by something even more bizarre and inexplicable. There is another theory which states that this has already happened.\r\n', \
+def getRandomQuote():
+    quotes = ['There is a theory which states that if ever anyone discovers exactly what the Universe is for and why it is here, it will instantly disappear and be replaced by something even more bizarre and inexplicable. There is another theory which states that this has already happened.\r\n', \
 		'Many were increasingly of the opinion that they\'d all made a big mistake in coming down from the trees in the first place. And some said that even the trees had been a bad move, and that no one should ever have left the oceans.\r\n', \
 		'\"My doctor says that I have a malformed public-duty gland and a natural deficiency in moral fibre,\" Ford muttered to himself, \"and that I am therefore excused from saving Universes.\"\r\n', \
 		'The ships hung in the sky in much the same way that bricks don\'t.\r\n', \
@@ -51,16 +50,102 @@ def addQuoteToFile( fullFilePath ):
 		'In the beginning the Universe was created. This has made a lot of people very angry and been widely regarded as a bad move.\r\n', \
 		'Don\'t Panic.\r\n', \
 		'Quite possibly, I am the best thing since sliced bread. -TJW\r\n']
+    return random.choice(quotes)
+
+def addQuoteToFile( fullFilePath ):
 	textFile = open(fullFilePath, 'a')
-	textFile.write(random.choice(quotes))
+	textFile.write(getRandomQuote())
 	textFile.close()
 
-for i, arg in enumerate(sys.argv):
-    if arg == '-about':
-        print 'The Infinite Improbability Command Line is a command line interface (CLI) that performs'
-        print 'basic functions and is used as an example program for UGUI to create a GUI for.'
-        print 'IICL is created in Python by Hai Nguyen.'
-    if arg == '-random':
-        print randomAlphaNumeric(int(sys.argv[i + 1]))
-    if arg == '-quote':
-    	addQuoteToFile(sys.argv[i + 1])
+def main():
+    # First, create variables to hold parameter values when accepted
+    boolHelp = False
+    strScrambleText = None
+    boolAboutChecked = False
+    boolQuoteChecked = False
+    strConstellationValue = None
+    intRandomCharacterLength = -1
+    strFilename = None
+
+    i = 1
+    while i < len(sys.argv):
+        if (sys.argv[i] == '-help') or (sys.argv[i] == '/?'):
+            boolHelp = True
+        elif sys.argv[i] == '-about':
+            boolAboutChecked = True
+        elif sys.argv[i] == '-quote':
+            boolQuoteChecked = True
+            if i+1 < len(sys.argv):
+                if (sys.argv[i+1][i] != '-'):
+                    # The next value is a value, not another parameter
+                    strFilename = sys.argv[i+1]
+                    i += 1
+        elif sys.argv[i] == '-scramble':
+            if i+1 < len(sys.argv):
+                if sys.argv[i+1][0] != '-':
+                    strScrambleText = sys.argv[i+1]
+                    i += 1
+                else:
+                    print 'Value for the -scramble parameter is missing'
+                    break
+        elif sys.argv[i] == '-constellation':
+            if i+1 < len(sys.argv):
+                if sys.argv[i+1][0] != '-':
+                    strConstellationValue = sys.argv[i+1]
+                    i += 1
+                else:
+                    print 'Value for the -constellation parameter is missing'
+                    break
+        elif sys.argv[i] == '-random':
+            if i+1 < len(sys.argv):
+                if sys.argv[i+1][0] != '-':
+                    intRandomCharacterLength = int(sys.argv[i+1])
+                    i += 1
+                else:
+                    print 'Value for the -random parameter is missing'
+                    break
+        i += 1
+    if boolHelp:
+        print 'These are the common commands for IICL:'
+        print '  -about               Gives information about IICL and credits'
+        print '  -quote "file.txt"    Appends one Douglas Adams quote to the text file followed by two returns.'
+        print '  -constellation [X]   Accepts orion, ursaminor, aries, and virgo'
+        print '  -random X            Produces X number of random charachters max of 11'
+        print '  -scramble "asdf"     Scrambles the text entered into a random order'
+        print '  -quote               Echoes back one Douglas Adams Quote'
+        print '  -help                Shows this message'
+        print '  /?                   Shows this message'
+    # Do your validation here. Check with "var is None" for string variables or " < 0" for integer values
+    else:
+        pass #do whatever method is asked
+        if boolAboutChecked:
+            print 'ABOUT TEXT GOES HERE.'
+        if strFilename:
+            'quote: ' + str(boolQuoteChecked) + ', ' + strFilename
+        else:
+            'quote: ' + str(boolQuoteChecked) + ', None'
+        if strConstellationValue:
+            print 'CONSTELLATION GOES HERE. YOU REQUESTED: ' + strConstellationValue + '.'
+        if intRandomCharacterLength > -1:
+            print 'DO RANDOM CHARACTERS CODE HERE. YOU REQUESTED: ' + str(intRandomCharacterLength) + ' RANDOM CHARACTERS.'
+            print randomAlphaNumeric(intRandomCharacterLength)
+        if strScrambleText:
+            print 'DO TEXT SCRAMBLING HERE.'
+            print strScrambleText
+
+    #for i, arg in enumerate(sys.argv):
+    #    if arg == '-about':
+    #        print 'The Infinite Improbability Command Line is a command line interface (CLI) that performs'
+    #        print 'basic functions and is used as an example program for UGUI to create a GUI for.'
+    #        print 'IICL is created in Python by Hai Nguyen.'
+    #    if arg == '-random':
+    #        print randomAlphaNumeric(int(sys.argv[i + 1]))
+    #    if arg == '-quote':
+    #        addQuoteToFile(sys.argv[i + 1])
+    sys.exit()
+
+if __name__ == '__main__':
+    import sys
+    import os
+    import random
+    main()
