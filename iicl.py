@@ -6,6 +6,25 @@ def randomAlphaNumeric( length ):
         alphaNumeric = alphaNumeric + random.choice('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')
     return alphaNumeric
 
+def getConstellation(name):
+    result = ''
+    constellations = ['The Aries constellation contains Teegarden\'s star.'
+        , 'Some of the stars in the Orion constellation: Rigel, Betelgeuse, and Bellatrix.'
+        , 'Polaris is a star in the Ursa Minor constellation.'
+        , 'Spica is a star in the Virgo constellation.']
+    if name == 'aries':
+        result = 'The Aries constellation contains Teegarden\'s star.'
+    elif name == 'orion':
+        result = 'Some of the stars in the Orion constellation: Rigel, Betelgeuse, and Bellatrix.'
+    elif name == 'ursaminor':
+        result = 'Polaris is a star in the Ursa Minor constellation.'
+    elif name == 'virgo':
+        result = 'Spica is a star in the Virgo constellation.'
+    else:
+        result = 'You requested an invalid constellation. One has been selected for you.\r\n'
+        result += random.choice(constellations)
+    return result
+
 def getRandomQuote():
     quotes = ['There is a theory which states that if ever anyone discovers exactly what the Universe is for and why it is here, it will instantly disappear and be replaced by something even more bizarre and inexplicable. There is another theory which states that this has already happened.\r\n', \
 		'Many were increasingly of the opinion that they\'d all made a big mistake in coming down from the trees in the first place. And some said that even the trees had been a bad move, and that no one should ever have left the oceans.\r\n', \
@@ -57,6 +76,15 @@ def addQuoteToFile( fullFilePath ):
 	textFile.write(getRandomQuote())
 	textFile.close()
 
+def scrambleText(text):
+    scrambled = text
+    for i in range(len(scrambled)):
+        temp = scrambled[i]
+        r = random.randint(0, len(scrambled)-1)
+        scrambled = scrambled[0:i] + scrambled[r] + scrambled[i+1:]
+        scrambled = scrambled[0:r] + temp + scrambled[r+1:]
+    return scrambled
+
 def main():
     # First, create variables to hold parameter values when accepted
     boolHelp = False
@@ -76,7 +104,7 @@ def main():
         elif sys.argv[i] == '-quote':
             boolQuoteChecked = True
             if i+1 < len(sys.argv):
-                if (sys.argv[i+1][i] != '-'):
+                if (sys.argv[i+1][0] != '-'):
                     # The next value is a value, not another parameter
                     strFilename = sys.argv[i+1]
                     i += 1
@@ -116,22 +144,23 @@ def main():
         print '  -help                Shows this message'
         print '  /?                   Shows this message'
     # Do your validation here. Check with "var is None" for string variables or " < 0" for integer values
+    # If no further validation is needed, go ahead and act on parameters in the 'else' segment
     else:
-        pass #do whatever method is asked
         if boolAboutChecked:
-            print 'ABOUT TEXT GOES HERE.'
-        if strFilename:
-            'quote: ' + str(boolQuoteChecked) + ', ' + strFilename
-        else:
-            'quote: ' + str(boolQuoteChecked) + ', None'
+            print 'The Infinite Improbability Command Line is a command line interface (CLI) that performs'
+            print 'basic functions and is used as an example program for UGUI to create a GUI for.'
+            print 'IICL is created in Python by Hai Nguyen, David Ragsdale, and Jared Wilcurt.'
+        if boolQuoteChecked:
+            if strFilename:
+                addQuoteToFile(strFilename)
+            else:
+                print getRandomQuote()
         if strConstellationValue:
-            print 'CONSTELLATION GOES HERE. YOU REQUESTED: ' + strConstellationValue + '.'
+            print getConstellation(strConstellationValue)
         if intRandomCharacterLength > -1:
-            print 'DO RANDOM CHARACTERS CODE HERE. YOU REQUESTED: ' + str(intRandomCharacterLength) + ' RANDOM CHARACTERS.'
             print randomAlphaNumeric(intRandomCharacterLength)
         if strScrambleText:
-            print 'DO TEXT SCRAMBLING HERE.'
-            print strScrambleText
+            print scrambleText(strScrambleText)
 
     #for i, arg in enumerate(sys.argv):
     #    if arg == '-about':
