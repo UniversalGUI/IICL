@@ -11,18 +11,18 @@ It is designed to be a sample CLI that ships with [UGUI](http://ugui.io).
 ###Commands
 
     -about
-      The Infinite Improbability Command Line is a command line interface (CLI) that performs
-      basic functions and is used as an example program for UGUI to create a GUI for.
-      IICL is created in Python by Hai Nguyen.
+      The Infinite Improbability Command Line is a command line interface (CLI) that
+      functions as an example program for UGUI to create a GUI for. http://UGUI.io
+      IICL is created in Python by David Ragsdale, Hai Nguyen, and Jared Wilcurt.
 
     /?
     These are the common commands for IICL:
       -about               Gives information about IICL and credits
-      -quote "file.txt"    Appends one Douglas Adams quote to the text file followed by two returns.
       -constellation [X]   Accepts orion, ursaminor, aries, and virgo
+      -quotation           Echoes back one Douglas Adams Quote
+      -quote "file.txt"    Appends one Douglas Adams quote to the text file followed by two returns.
       -random X            Produces X number of random charachters max of 11
       -scramble "asdf"     Scrambles the text entered into a random order
-      -quote               Echoes back one Douglas Adams Quote
       -help                Shows this message
       /?                   Shows this message
 

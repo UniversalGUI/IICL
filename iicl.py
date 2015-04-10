@@ -147,9 +147,9 @@ def main():
     # If no further validation is needed, go ahead and act on parameters in the 'else' segment
     else:
         if boolAboutChecked:
-            print 'The Infinite Improbability Command Line is a command line interface (CLI) that performs'
-            print 'basic functions and is used as an example program for UGUI to create a GUI for.'
-            print 'IICL is created in Python by Hai Nguyen, David Ragsdale, and Jared Wilcurt.'
+            print 'The Infinite Improbability Command Line is a command line interface (CLI) that'
+            print 'functions as an example program for UGUI to create a GUI for. http://UGUI.io'
+            print 'IICL is created in Python by David Ragsdale, Hai Nguyen, and Jared Wilcurt.'
         if boolQuoteChecked:
             if strFilename:
                 addQuoteToFile(strFilename)
