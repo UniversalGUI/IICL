@@ -136,11 +136,12 @@ def main():
     if boolHelp:
         print 'These are the common commands for IICL:'
         print '  -about               Gives information about IICL and credits'
-        print '  -quote "file.txt"    Appends one Douglas Adams quote to the text file followed by two returns.'
+        print '  -quotation           Echoes back one Douglas Adams Quote'
+        print '  -quote "file.txt"    Appends one Douglas Adams quote to the text'
         print '  -constellation [X]   Accepts orion, ursaminor, aries, and virgo'
         print '  -random X            Produces X number of random charachters max of 11'
+        print '  -random [X]          Accepts alpha, numeric, and alphanumeric. Changes random type'
         print '  -scramble "asdf"     Scrambles the text entered into a random order'
-        print '  -quote               Echoes back one Douglas Adams Quote'
         print '  -help                Shows this message'
         print '  /?                   Shows this message'
     # Do your validation here. Check with "var is None" for string variables or " < 0" for integer values

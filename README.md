@@ -21,7 +21,8 @@ It is designed to be a sample CLI that ships with [UGUI](http://ugui.io).
       -constellation [X]   Accepts orion, ursaminor, aries, and virgo
       -quotation           Echoes back one Douglas Adams Quote
       -quote "file.txt"    Appends one Douglas Adams quote to the text file followed by two returns.
-      -random X            Produces X number of random charachters max of 11
+      -random X            Produces X number of random charachters max of 11 (defaults to alpha)
+      -randomtype [X]      Accepts alpha, numeric, and alphanumeric, changes type of random chars.
       -scramble "asdf"     Scrambles the text entered into a random order
       -help                Shows this message
       /?                   Shows this message
@@ -34,3 +35,4 @@ It is designed to be a sample CLI that ships with [UGUI](http://ugui.io).
       Polaris is a star in the Ursa Minor constellation.
     -constellation virgo
       Spica is a star in the Virgo constellation.
+
