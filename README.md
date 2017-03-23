@@ -1,6 +1,6 @@
-#![IICL Logo](IICL.png "Infinite Improbability Command Line")
+![IICL Logo](IICL.png "Infinite Improbability Command Line")
 
-##Infinite Improbability Command Line
+## Infinite Improbability Command Line
 
 This is a command line application created in Python and exported out as a native application for Windows, Linux, and OSX.
 
@@ -8,7 +8,7 @@ It is designed to be a sample CLI that ships with [UGUI](http://ugui.io).
 
 * * *
 
-###Commands
+### Commands
 
     -about
       The Infinite Improbability Command Line is a command line interface (CLI) that
